@@ -137,12 +137,21 @@ Output files:
 
 # Example Change Detection
 
-  ---------------------------------------------------------------------------------------------------------
-  Before                           After                           Detected Change
-  -------------------------------- ------------------------------- ----------------------------------------
-  ![](sample_results/before.png)   ![](sample_results/after.png)   ![](sample_results/change_overlay.png)
+<p align="center">
+  <img src="sample_results/before.png" width="30%">
+  <img src="sample_results/after.png" width="30%">
+  <img src="sample_results/change_overlay.png" width="30%">
+</p>
 
-  ---------------------------------------------------------------------------------------------------------
+<p align="center">
+  Before &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  After &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Change Detection
+</p>
 
 Red regions represent **detected changes** between the two satellite
 images.
@@ -195,11 +204,5 @@ Satellite change detection can be applied to:
 B.Tech Computer Science and Engineering\
 IIITDM Kurnool
 
-GitHub: https://github.com/yashdeep-rai\
+GitHub: https://github.com/yashdeep-rai \
 Email: yashdeep677@gmail.com
-
-------------------------------------------------------------------------
-
-# License
-
-This project is for **research and educational purposes**.
