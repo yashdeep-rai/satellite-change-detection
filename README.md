@@ -59,7 +59,7 @@ benchmark dataset for satellite change detection.
 
 Dataset link:
 
-https://github.com/justchenhao/LEVIR-CD
+https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim
 
 ------------------------------------------------------------------------
 
