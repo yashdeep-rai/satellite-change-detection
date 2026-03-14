@@ -1,0 +1,7 @@
+
+dataset/
+dataset_raw/
+*.zip
+*.pth
+*.pt
+__pycache__/

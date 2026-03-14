@@ -1,3 +1,4 @@
+
 import torch
 import cv2
 from model import ChangeDetector
@@ -17,11 +18,10 @@ imgA = torch.tensor(imgA).permute(2,0,1).unsqueeze(0).float()/255
 imgB = torch.tensor(imgB).permute(2,0,1).unsqueeze(0).float()/255
 
 with torch.no_grad():
-
     pred = model(imgA,imgB)
 
 mask = pred.squeeze().numpy()
 
 cv2.imwrite("change_map.png",mask*255)
 
-print("Change map saved as change_map.png")
+print("Change map saved.")

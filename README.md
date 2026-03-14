@@ -1,65 +1,151 @@
 # Satellite Change Detection using Deep Learning
 
 This project implements a **deep learning model for detecting changes
-between multi-temporal satellite images**. The model takes two satellite
-images captured at different times and predicts a **change map**
-highlighting regions where significant changes occurred.
+between multi-temporal satellite images**.\
+Given two satellite images captured at different times, the model
+predicts a **pixel-wise change map** highlighting areas where
+significant changes occurred.
 
-This type of system is widely used in **remote sensing, environmental
-monitoring, disaster assessment, and urban development analysis**.
+This technique is widely used in:
+
+-   Remote sensing
+-   Environmental monitoring
+-   Urban expansion detection
+-   Disaster damage assessment
+-   Land-use analysis
 
 ------------------------------------------------------------------------
 
-# Project Overview
+# Features
 
-Satellite imagery change detection is an important problem in **computer
-vision and geospatial analysis**. By comparing satellite images taken at
-different time periods, we can detect:
-
--   Urban expansion
--   Deforestation
--   Infrastructure development
--   Natural disaster damage
--   Water body changes
-
-This project uses a **Siamese Convolutional Neural Network (CNN)**
-architecture to extract features from two satellite images and compute a
-difference map to identify changed regions.
+-   Automatic **LEVIR-CD dataset download**
+-   **Siamese CNN / U-Net style architecture**
+-   **IoU metric evaluation**
+-   **GPU acceleration (CUDA support)**
+-   **Training progress bars**
+-   Automatic **visual result generation**
+-   Research-style **change overlay visualization**
 
 ------------------------------------------------------------------------
 
 # Model Architecture
 
-The system uses a **shared encoder (Siamese CNN)** to process both
-images.
+The model processes two satellite images using a **shared encoder** and
+computes the difference between extracted features.
 
-            Image A ──► CNN Encoder ──┐
-                                       ├── Feature Difference ──► Decoder ──► Change Map
-            Image B ──► CNN Encoder ──┘
+            Image A ──► Encoder ──┐
+                                   ├── Feature Difference ──► Decoder ──► Change Map
+            Image B ──► Encoder ──┘
 
-### Steps
+Steps:
 
-1.  Extract features from both images using the same CNN encoder\
-2.  Compute the **absolute difference** between feature maps\
-3.  Pass the difference through a decoder\
-4.  Output a **binary change mask**
+1.  Extract features from both images using a shared CNN encoder\
+2.  Compute absolute feature differences\
+3.  Decode differences into a pixel-wise change map\
+4.  Upsample predictions to match original resolution
 
 ------------------------------------------------------------------------
 
 # Dataset
 
-The model is trained on the **LEVIR-CD dataset**, a widely used
-benchmark dataset for satellite change detection.
+This project uses the **LEVIR-CD dataset**, a widely used benchmark for
+satellite change detection.
 
-### Dataset Characteristics
+Dataset characteristics:
 
 -   High-resolution aerial images
--   Image pairs captured at different times
+-   Multi-temporal satellite image pairs
 -   Pixel-level change annotations
 
-Dataset link:
+The dataset is **automatically downloaded** when running the training
+script.
 
-https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim
+------------------------------------------------------------------------
+
+# Installation
+
+Clone the repository:
+
+``` bash
+git clone https://github.com/YOUR_USERNAME/satellite-change-detection.git
+cd satellite-change-detection
+```
+
+Create environment (recommended):
+
+``` bash
+python -m venv torch_env
+```
+
+Activate environment (Windows):
+
+``` bash
+torch_env\Scripts\activate
+```
+
+Install dependencies:
+
+``` bash
+pip install -r requirements.txt
+```
+
+------------------------------------------------------------------------
+
+# Training
+
+Run the training script:
+
+``` bash
+python train.py
+```
+
+The script will automatically:
+
+-   Download the dataset
+-   Extract training images
+-   Train the model
+-   Save trained weights
+
+Example output:
+
+    Epoch 1/10
+    Loss: 0.24
+    IoU: 0.001
+
+Trained model is saved as:
+
+    change_model.pth
+
+------------------------------------------------------------------------
+
+# Generate Example Results
+
+After training, generate visualization results:
+
+``` bash
+python visualize_results.py
+```
+
+Output files:
+
+    sample_results/
+       before.png
+       after.png
+       change_overlay.png
+
+------------------------------------------------------------------------
+
+# Example Change Detection
+
+  ---------------------------------------------------------------------------------------------------------
+  Before                           After                           Detected Change
+  -------------------------------- ------------------------------- ----------------------------------------
+  ![](sample_results/before.png)   ![](sample_results/after.png)   ![](sample_results/change_overlay.png)
+
+  ---------------------------------------------------------------------------------------------------------
+
+Red regions represent **detected changes** between the two satellite
+images.
 
 ------------------------------------------------------------------------
 
@@ -69,62 +155,14 @@ https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim
     │
     ├── dataset.py
     ├── model.py
+    ├── metrics.py
     ├── train.py
     ├── predict.py
+    ├── visualize_results.py
+    ├── download_dataset.py
     ├── requirements.txt
     ├── sample_results/
     └── README.md
-
-------------------------------------------------------------------------
-
-# Installation
-
-Clone the repository:
-
-``` bash
-git clone https://github.com/yashdeep-rai/satellite-change-detection.git
-cd satellite-change-detection
-```
-
-Install dependencies:
-
-``` bash
-pip install torch torchvision opencv-python matplotlib
-```
-
-------------------------------------------------------------------------
-
-# Training
-
-Place the dataset inside the project directory and run:
-
-``` bash
-python train.py
-```
-
-------------------------------------------------------------------------
-
-# Inference
-
-To generate a change map for a new pair of images:
-
-``` bash
-python predict.py
-```
-
-The output will be a **binary change map** highlighting regions where
-significant changes occurred.
-
-------------------------------------------------------------------------
-
-# Example Results
-
-  -----------------------------------------------------------------------------------------------------
-  Before                           After                           Change Map
-  -------------------------------- ------------------------------- ------------------------------------
-  ![](sample_results/before.png)   ![](sample_results/after.png)   ![](sample_results/change_map.png)
-
-  -----------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
@@ -134,18 +172,20 @@ significant changes occurred.
 -   PyTorch
 -   OpenCV
 -   NumPy
+-   tqdm
+-   gdown
 
 ------------------------------------------------------------------------
 
 # Applications
 
-This approach can be applied to:
+Satellite change detection can be applied to:
 
--   Environmental monitoring
+-   Urban growth monitoring
 -   Disaster damage assessment
--   Urban growth analysis
--   Agricultural monitoring
--   Land use classification
+-   Environmental monitoring
+-   Deforestation detection
+-   Agricultural analysis
 
 ------------------------------------------------------------------------
 
@@ -155,5 +195,11 @@ This approach can be applied to:
 B.Tech Computer Science and Engineering\
 IIITDM Kurnool
 
-GitHub: https://github.com/yashdeep-rai \
+GitHub: https://github.com/yashdeep-rai\
 Email: yashdeep677@gmail.com
+
+------------------------------------------------------------------------
+
+# License
+
+This project is for **research and educational purposes**.
