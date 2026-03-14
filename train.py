@@ -2,6 +2,9 @@ import torch
 from torch.utils.data import DataLoader
 from dataset import ChangeDataset
 from model import ChangeDetector
+from download_dataset import download_dataset
+
+download_dataset()
 
 DATASET_PATH = "dataset"
 
